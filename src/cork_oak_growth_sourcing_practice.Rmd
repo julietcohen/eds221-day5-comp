@@ -1,0 +1,19 @@
+---
+title: "cork_oak_modeling"
+author: "Juliet"
+date: "8/13/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(here)
+source(here("src", "cork_oak_growth.R"))
+```
+
+```{r}
+height_t2(height_t1 = 25, t1 = 4, t2 = 10)
+height_t2()
+```
+
+the height of this cork at age 12 is `r height_t2(height_t1 = 10, t1 = 6, t2 = 8)` ft
