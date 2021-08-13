@@ -45,18 +45,27 @@ Add line-by-line comments wheres prompted in the code below, explaining what eac
 
 # The line below...
 time_yr <- seq(from = 0, to = 8, by = 1)
+#time_yr is a vector from 0-8, by 1, species is reproducing annually over 8 years, so creating 9 values
 
 # The line below...
 proj_year <- matrix(ncol = length(fish_year0), nrow = length(time_yr))
+#number of columns is 4, number of rows is 9, this is an empty matrix waiting to be filled
 
 # The line below...
 proj_year[1, ] <- fish_year0
+# in row 1, and considering all the columns in row 1 = fish_year0
+# [rows, col]
 
 # The for loop below...
 for (i in 2:length(time_yr)) {
   proj_year[i,] <- fish_leslie %*% proj_year[i-1,]
 }
+# start at index 2 because index 1 was given as initial conditions, this will run 8 times, from years 2-9
+# take the dot product of fish leslie matrix and proj year to create each year from previous time step over every column for each row
+# make sure to use the %*% rather than just *
+# this can also be written with 1:length(time_yr), proj_year[i+1,], proj_year[i,] replacing those indexes in the for loop
 
+# you can also flip the rows and col of the matrix to have rows = life stages and col = years, and then you have to flip [i,] --> [,i] and same for switching [i-1,] --> [,i-1]
 
 # The rest is wrangling & visualization (run to check it out):
 colnames(proj_year) <- c("eggs", "fry", "juvenile", "adult")
