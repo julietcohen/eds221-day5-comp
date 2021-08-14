@@ -2,8 +2,8 @@
 
 #requires packages:
 install.packages('testthat')
-#install.packages('devtools')
-#install.packages('remotes')
+install.packages('devtools')
+install.packages('remotes')
 
 library(testthat)
 
